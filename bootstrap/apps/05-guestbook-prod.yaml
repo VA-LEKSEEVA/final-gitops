@@ -1,0 +1,35 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: guestbook-prod
+  namespace: argocd
+spec:
+  project: default
+  sources:
+    - repoURL: https://github.com/VA-LEKSEEVA/final-helm.git
+      targetRevision: main
+      path: guestbook
+      helm:
+        valueFiles:
+          - $values/values/guestbook/prod.yaml
+        parameters:
+          - name: postgresql.auth.password
+            value: ""  # временно пусто, заполнится через CI или секрет
+    - repoURL: https://github.com/VA-LEKSEEVA/final-gitops.git
+      targetRevision: main
+      ref: values
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: guestbook-prod
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true
+  ignoreDifferences:
+    - group: apps
+      kind: Deployment
+      jsonPointers:
+        - /spec/replicas

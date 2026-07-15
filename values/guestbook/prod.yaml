@@ -1,0 +1,36 @@
+replicaCount: 2
+image:
+  repository: cr.yandex/<registry-id>/guestbook   # замени на свой registry
+  tag: latest
+  pullPolicy: IfNotPresent
+ingress:
+  enabled: true
+  className: nginx
+  host: guestbook.vika-cloud.ru
+  tls:
+    enabled: true
+    issuer: letsencrypt-prod
+resources:
+  requests:
+    cpu: 50m
+    memory: 64Mi
+  limits:
+    cpu: 200m
+    memory: 256Mi
+postgresql:
+  enabled: true
+  auth:
+    username: guestbook
+    password: ""   # заполняется в CI или через секрет
+    database: guestbook
+  primary:
+    persistence:
+      enabled: true
+      size: 5Gi
+monitoring:
+  serviceMonitor:
+    enabled: true
+  prometheusRule:
+    enabled: true
+  dashboard:
+    enabled: true
