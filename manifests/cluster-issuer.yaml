@@ -5,7 +5,7 @@ metadata:
 spec:
   acme:
     server: https://acme-v02.api.letsencrypt.org/directory
-    email: vikaalekseeva@gmail.com   # замени на свой email
+  email: Le8013cy@mail.ru
     privateKeySecretRef:
       name: letsencrypt-prod-key
     solvers:
