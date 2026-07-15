@@ -20,7 +20,7 @@ spec:
               http: 30080
               https: 30443
           hostPort:
-            enabled: true
+            enabled: false
   destination:
     server: https://kubernetes.default.svc
     namespace: ingress-nginx
