@@ -1,7 +1,7 @@
 replicaCount: 2
 image:
-  repository: cr.yandex/crp38qtcgb3m048rbf4u/guestbook   # замени на свой registry
-  tag: 93a2aa0404b4abb5bd5aa96da0622c017eab93b9
+  repository: cr.yandex/crp38qtcgb3m048rbf4u/guestbook # замени на свой registry
+  tag: 8f1cf8bd391eda941e8d285a801cbee0f99f6c42
   pullPolicy: IfNotPresent
 ingress:
   enabled: true
@@ -21,7 +21,7 @@ postgresql:
   enabled: true
   auth:
     username: guestbook
-    password: ""   # заполняется в CI или через секрет
+    password: "" # заполняется в CI или через секрет
     database: guestbook
   primary:
     persistence:
