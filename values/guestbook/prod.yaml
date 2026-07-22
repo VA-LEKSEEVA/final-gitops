@@ -1,7 +1,7 @@
 replicaCount: 2
 image:
   repository: cr.yandex/crp38qtcgb3m048rbf4u/guestbook # замени на свой registry
-  tag: 8f1cf8bd391eda941e8d285a801cbee0f99f6c42
+  tag: 4584f69cf6d3f0964874e18bd5f876615c546637
   pullPolicy: IfNotPresent
 ingress:
   enabled: true
