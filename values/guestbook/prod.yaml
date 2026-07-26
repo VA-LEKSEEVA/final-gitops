@@ -4,7 +4,6 @@ image:
   tag: 4584f69cf6d3f0964874e18bd5f876615c546637
   pullPolicy: IfNotPresent
 ingress:
-  enabled: true
   className: nginx
   host: guestbook.vika-cloud.ru
   tls:
@@ -18,7 +17,6 @@ resources:
     cpu: 200m
     memory: 256Mi
 postgresql:
-  enabled: true
   auth:
     username: guestbook
     password: "" # заполняется в CI или через секрет
@@ -34,3 +32,8 @@ monitoring:
     enabled: true
   dashboard:
     enabled: true
+
+
+backup:
+  enabled: true
+  schedule: "0 3 * * *"
