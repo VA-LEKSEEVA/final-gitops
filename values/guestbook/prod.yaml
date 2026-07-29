@@ -1,7 +1,7 @@
 replicaCount: 2
 image:
-  repository: cr.yandex/crp38qtcgb3m048rbf4u/guestbook
-  tag: latest
+  repository: ghcr.io/va-lekseeva/final-app
+  tag: 8d3a5704754f54be8f596ceb69db3fd1fd996935
   pullPolicy: IfNotPresent
 service:
   type: ClusterIP
