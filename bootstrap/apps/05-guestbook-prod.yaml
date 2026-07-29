@@ -12,9 +12,6 @@ spec:
       helm:
         valueFiles:
           - $values/values/guestbook/prod.yaml
-        parameters:
-          - name: postgresql.auth.password
-            value: ""  # временно пусто, заполнится через CI или секрет
     - repoURL: https://github.com/VA-LEKSEEVA/final-gitops.git
       targetRevision: main
       ref: values
