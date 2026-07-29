@@ -1,9 +1,13 @@
 replicaCount: 2
 image:
-  repository: cr.yandex/crp38qtcgb3m048rbf4u/guestbook # замени на свой registry
-  tag: 4584f69cf6d3f0964874e18bd5f876615c546637
+  repository: cr.yandex/crp38qtcgb3m048rbf4u/guestbook
+  tag: latest
   pullPolicy: IfNotPresent
+service:
+  type: ClusterIP
+  port: 80
 ingress:
+  enabled: true
   className: nginx
   host: guestbook.vika-cloud.ru
   tls:
@@ -17,9 +21,10 @@ resources:
     cpu: 200m
     memory: 256Mi
 postgresql:
+  image: postgres:16-alpine
   auth:
     username: guestbook
-    password: "" # заполняется в CI или через секрет
+    password: guestbook
     database: guestbook
   primary:
     persistence:
@@ -28,12 +33,19 @@ postgresql:
 monitoring:
   serviceMonitor:
     enabled: true
+    interval: 15s
   prometheusRule:
     enabled: true
   dashboard:
     enabled: true
-
-
+hpa:
+  enabled: false
+  minReplicas: 2
+  maxReplicas: 10
+  targetCPU: 70
+podDisruptionBudget:
+  enabled: false
+  minAvailable: 1
 backup:
   enabled: true
   schedule: "0 3 * * *"
