@@ -9,7 +9,7 @@ service:
 ingress:
   enabled: true
   className: nginx
-  host: guestbook.vika-cloud.ru
+  host: guestbook-89-169-158-161.sslip.io
   tls:
     enabled: true
     issuer: letsencrypt-prod
@@ -48,4 +48,4 @@ podDisruptionBudget:
   minAvailable: 1
 backup:
   enabled: true
-  schedule: "0 3 * * *"
+  schedule: 0 3 * * *
