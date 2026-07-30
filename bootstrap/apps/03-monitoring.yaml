@@ -6,9 +6,8 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://prometheus-community.github.io/helm-charts
-    chart: kube-prometheus-stack
-    targetRevision: 69.3.0
+    repoURL: https://github.com/VA-LEKSEEVA/final-app.git
+    targetRevision: main
     helm:
       values: |
         grafana:
@@ -26,6 +25,7 @@ spec:
         prometheus:
           prometheusSpec:
             retention: 1d
+    path: platform-charts/kube-prometheus-stack
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring
@@ -35,3 +35,4 @@ spec:
       selfHeal: true
     syncOptions:
       - CreateNamespace=true
+      - ServerSideApply=true
