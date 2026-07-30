@@ -1,7 +1,7 @@
 replicaCount: 2
 image:
   repository: ghcr.io/va-lekseeva/final-app
-  tag: 2cd954b4dab128e6545d093730112cd24df02557
+  tag: 33916a155f4e57a2c3d3b33ddf542c019ee0f42b
   pullPolicy: IfNotPresent
 service:
   type: ClusterIP
