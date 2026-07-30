@@ -6,9 +6,9 @@ metadata:
 spec:
   project: default
   sources:
-    - repoURL: https://github.com/VA-LEKSEEVA/final-helm.git
+    - repoURL: https://github.com/VA-LEKSEEVA/final-app.git
       targetRevision: main
-      path: guestbook
+      path: deploy/guestbook
       helm:
         valueFiles:
           - $values/values/guestbook/prod.yaml

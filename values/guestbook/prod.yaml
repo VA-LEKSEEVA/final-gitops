@@ -1,7 +1,7 @@
 replicaCount: 2
 image:
   repository: ghcr.io/va-lekseeva/final-app
-  tag: 0f6fdf5e3f2512cf813f3a351cf095fc2c608760
+  tag: f1147ce3fe32be738b220e2736081679d2140059
   pullPolicy: IfNotPresent
 service:
   type: ClusterIP
@@ -21,7 +21,11 @@ resources:
     cpu: 200m
     memory: 256Mi
 postgresql:
-  image: postgres:16-alpine
+  image:
+    registry: docker.io
+    repository: bitnamilegacy/postgresql
+    tag: 16.4.0-debian-12-r14
+    pullPolicy: IfNotPresent
   auth:
     username: guestbook
     password: guestbook
@@ -49,3 +53,4 @@ podDisruptionBudget:
 backup:
   enabled: true
   schedule: 0 3 * * *
+containerPort: 8080
