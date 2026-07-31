@@ -6,18 +6,19 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://kubernetes.github.io/ingress-nginx
-    chart: ingress-nginx
-    targetRevision: 4.11.3
+    repoURL: https://github.com/VA-LEKSEEVA/final-app.git
+    targetRevision: main
     helm:
       values: |
         controller:
+          kind: DaemonSet
           hostPort:
             enabled: false
           service:
             type: NodePort
           nodeSelector:
             kubernetes.io/os: linux
+    path: platform-charts/ingress-nginx
   destination:
     server: https://kubernetes.default.svc
     namespace: ingress-nginx
