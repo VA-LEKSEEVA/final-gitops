@@ -9,7 +9,7 @@ service:
 ingress:
   enabled: true
   className: nginx
-  host: guestbook-89-169-158-161.sslip.io
+  host: guestbook-51-250-92-29.sslip.io
   tls:
     enabled: true
     issuer: letsencrypt-prod
