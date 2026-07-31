@@ -3,25 +3,21 @@ kind: Application
 metadata:
   name: ingress-nginx
   namespace: argocd
-  annotations:
-    argocd.argoproj.io/sync-wave: "-1"
 spec:
   project: default
   source:
-    repoURL: https://github.com/VA-LEKSEEVA/final-app.git
-    targetRevision: main
+    repoURL: https://kubernetes.github.io/ingress-nginx
+    chart: ingress-nginx
+    targetRevision: 4.11.3
     helm:
       values: |
         controller:
-          kind: DaemonSet
+          hostPort:
+            enabled: false
           service:
             type: NodePort
-            nodePorts:
-              http: 30080
-              https: 30443
-          hostPort:
-            enabled: true
-    path: platform-charts/ingress-nginx
+          nodeSelector:
+            kubernetes.io/os: linux
   destination:
     server: https://kubernetes.default.svc
     namespace: ingress-nginx
