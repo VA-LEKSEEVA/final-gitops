@@ -8,10 +8,13 @@ service:
   port: 80
 ingress:
   enabled: true
-  className: nginx
-  host: guestbook-51-250-92-29.sslip.io
+  className: traefik
+  host: guestbook-93-77-190-98.sslip.io
   tls:
     enabled: true
+annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
+    cert-manager.io/cluster-issuer: letsencrypt-prod
     issuer: letsencrypt-prod
 resources:
   requests:
