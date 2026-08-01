@@ -9,7 +9,7 @@ service:
 ingress:
   enabled: true
   className: traefik
-  host: guestbook-93-77-190-98.sslip.io
+  host: guestbook-111.88.241.193.sslip.io
   tls:
     enabled: true
   annotations:
