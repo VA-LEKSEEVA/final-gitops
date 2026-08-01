@@ -12,10 +12,9 @@ ingress:
   host: guestbook-93-77-190-98.sslip.io
   tls:
     enabled: true
-annotations:
+  annotations:
     traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
     cert-manager.io/cluster-issuer: letsencrypt-prod
-    issuer: letsencrypt-prod
 resources:
   requests:
     cpu: 50m
@@ -56,4 +55,3 @@ podDisruptionBudget:
 backup:
   enabled: true
   schedule: 0 3 * * *
-containerPort: 8080
